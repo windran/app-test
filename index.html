@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html lang="id">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Undangan – Tasyakuran Khitanan</title>
+<link href="styles.css" rel="stylesheet"/>
+</head>
+<body>
+<!-- Frame sudut atas -->
+<img src="assets/corner-left.webp" alt="" class="corner-frame corner-left" loading="eager" decoding="async">
+<img src="assets/corner-left.webp" alt="" class="corner-frame corner-right" loading="eager" decoding="async">  
+<div id="islamic-frame">
+<!-- ===== INTRO (Pertama kali tampil) ===== -->
+<div aria-label="Intro loading" id="intro" role="dialog">
+<canvas aria-hidden="true" id="fx"></canvas>
+<div class="intro-wrap">
+<div class="intro-title-main">UNDANGAN</div>
+<div class="intro-title-sub">TASYAKURAN KHITANAN</div>
+<img alt="Foto pengantin sunat" class="intro-photo" id="introPhoto" src="assets/el.png"/>
+<div class="intro-name" id="introName">El Gathfaan Saghara Aslan</div>
+<div class="spacer"></div>
+<div class="intro-cta">
+<button class="btn" data-click-sound="" id="startBtn">Buka Undangan</button>
+</div>
+<div class="loading" id="loadingRow"><span aria-hidden="true" class="spinner"></span>Loading</div>
+<audio id="bootSfx" preload="auto"><source src="assets/ps2.mp3" type="audio/mpeg"/></audio>
+</div>
+</div>
+<!-- ===== CONTENT (muncul setelah intro ditutup) ===== -->
+<header class="opening-full" id="opening">
+<div class="opening-wrap">
+<span class="chip">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</span>
+<img alt="Foto anak" class="photo opening-photo" src="assets/el.png"/>
+<h2 class="opening-greet">Assalamu’alaikum warahmatullahi wabarakatuh.</h2>
+<p class="opening-invite">
+        Tanpa mengurangi rasa hormat, kami mengundang Bapak/Ibu/Saudara(i)
+        untuk menghadiri <strong>Tasyakuran Khitan</strong> putra kami.
+      </p>
+<h1 class="opening-name">El Gathfaan Saghara Aslan</h1>
+<p class="lead">Putra Bapak Andri &amp; Ibu Lingga</p>
+</div>
+</header>
+<main>
+<span id="event"></span>
+<section class="sec-full" id="waktu">
+<div class="sec-wrap">
+<h2>TASYAKURAN KHITAN</h2>
+<P>insya Allah akan dilaksanakan pada :</P>
+<div>
+<div><b>Minggu, 31 Agustus 2025</b>
+<p>10.00 WIB – selesai</p>
+<p>Perumahan Cibarusah Indah, Blok C11 No.25 – Bekasi, Jawa Barat</p>
+</div>
+</div>
+</div>
+
+
+</section>
+<span id="maps"></span>
+<section class="sec-full" id="lokasi">
+<div class="sec-wrap">
+<h2>Lokasi</h2>
+<iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253736.70211833896!2d106.93414736176581!3d-6.440771426237559!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69bd097402a7ff%3A0xe649d47e2c39fd23!2sSky%20White%20Rent%20Car%20Bogor!5e0!3m2!1sid!2sid!4v1755242586474!5m2!1sid!2sid" title="Peta Lokasi"></iframe>
+<p><a class="btn-primary btn" data-click-sound="" href="#" rel="noopener" target="_blank">📍 Buka Google Maps</a></p>
+<p>Perumahan Cibarusah Indah, Blok C11 No.25 – Bekasi, Jawa Barat</p>
+</div>
+</section>
+
+<section class="sec-full" id="gift">
+<div class="sec-wrap">
+<h2>Tanda Kasih</h2>
+<p>Rekening/QR untuk tanda kasih.</p>
+<img alt="dana" class="foto" src="assets/dana.webp"/>
+<p>Dana : 089629266868 (Atas Nama Lingga)</p>
+</div>
+</section>
+
+<section class="sec-full" id="galeri">
+  <div class="sec-wrap">
+    <h2>Galeri Foto</h2>
+
+      <img class="card" src="assets/1.webp" alt="">
+      <img class="card" src="assets/2.webp" alt="">
+      <img class="card" src="assets/3.webp" alt="">
+      <img class="card" src="assets/4.webp" alt="">
+      <!-- dst -->
+    </div>
+  </div>
+</section>
+
+<section class="sec-full" id="thanks">
+<div class="sec-wrap">
+<h2>Terima Kasih</h2>
+<p>Merupakan suatu kebahagiaan dan kehormatan bagi kami, apabila Bapak/Ibu/Saudara(i) berkenan hadir dan memberikan do'a.</p>
+<p class="thanks-text">Andri & Lingga</p>
+<img alt="foto orang tua" class="foto" src="assets/5.webp">
+</div>
+</section>
+
+
+
+</main>
+<audio id="uiClick" preload="auto"><source src="assets/click.wav" type="audio/wav"/></audio>
+<script src="app.js"></script>
+<!-- ===== Bottom Nav ===== -->
+<div aria-label="Menu bawah" class="bnav" role="navigation">
+  <div class="bnav-wrap">
+
+    <!-- Opening -->
+    <a class="btn-primary btn active" data-click-sound="" href="#opening">
+      <span aria-hidden="true" class="ico">
+        <!-- Home / Opening -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" 
+             viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9.5 12 4l9 5.5V20a2 2 0 0 1-2 2h-5v-6H10v6H5a2 2 0 0 1-2-2Z"/>
+        </svg>
+      </span>
+      <span class="txt">Opening</span>
+    </a>
+
+    <!-- Event -->
+    <a class="btn-primary btn" data-click-sound="" href="#event">
+      <span aria-hidden="true" class="ico">
+        <!-- Calendar -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" 
+             viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+          <line x1="16" y1="2" x2="16" y2="6"/>
+          <line x1="8" y1="2" x2="8" y2="6"/>
+          <line x1="3" y1="10" x2="21" y2="10"/>
+        </svg>
+      </span>
+      <span class="txt">Event</span>
+    </a>
+
+    <!-- Maps -->
+    <a class="btn-primary btn" data-click-sound="" href="#maps">
+      <span aria-hidden="true" class="ico">
+        <!-- Map Pin -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" 
+             viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z"/>
+          <circle cx="12" cy="10" r="3"/>
+        </svg>
+      </span>
+      <span class="txt">Maps</span>
+    </a>
+
+    <!-- Gift -->
+    <a class="btn-primary btn" data-click-sound="" href="#gift">
+      <span aria-hidden="true" class="ico">
+        <!-- Gift -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" 
+             viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 12 20 22 4 22 4 12"/>
+          <rect x="2" y="7" width="20" height="5"/>
+          <line x1="12" y1="22" x2="12" y2="7"/>
+          <path d="M12 7c-1.5 0-3-1.2-3-2.5S10.5 2 12 2s3 1.2 3 2.5S13.5 7 12 7Z"/>
+        </svg>
+      </span>
+      <span class="txt">Gift</span>
+    </a>
+
+    <!-- Galeri -->
+    <a class="btn-primary btn" data-click-sound="" href="#galeri">
+      <span aria-hidden="true" class="ico">
+        <!-- Image -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" 
+             viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+          <circle cx="9" cy="9" r="2"/>
+          <path d="m21 15-4-4-3 3-4-4-5 5"/>
+        </svg>
+      </span>
+      <span class="txt">Galeri</span>
+    </a>
+
+    <!-- Thanks -->
+    <a class="btn-primary btn" data-click-sound="" href="#thanks">
+      <span aria-hidden="true" class="ico">
+        <!-- Heart / Thanks -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" 
+             viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20.8 4.6c-1.9-1.9-5-1.9-6.9 0l-1.9 1.9-1.9-1.9c-1.9-1.9-5-1.9-6.9 0s-1.9 5 0 6.9l8.8 8.8 8.8-8.8c1.9-1.9 1.9-5 0-6.9Z"/>
+        </svg>
+      </span>
+      <span class="txt">Thanks</span>
+    </a>
+
+  </div>
+</div>
+
+<!-- Side Dock (ikon ringkas saat scroll turun) -->
+<div aria-label="Navigasi cepat" class="side-dock">
+<a class="btn-primary btn" data-click-sound="" href="#opening"><svg fill="none" height="22" viewbox="0 0 24 24" width="22"><path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1v-9.5Z" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path></svg></a>
+<a class="btn-primary btn" data-click-sound="" href="#event"><svg fill="none" height="22" viewbox="0 0 24 24" width="22"><rect height="18" rx="2" stroke="currentColor" stroke-width="2" width="18" x="3" y="4"></rect><path d="M16 2v4M8 2v4M3 10h18" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path></svg></a>
+<a class="btn-primary btn" data-click-sound="" href="#maps"><svg fill="none" height="22" viewbox="0 0 24 24" width="22"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="currentColor" stroke-width="2"></path><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"></circle></svg></a>
+</div>
+</div>
+
+</body>
+</html>

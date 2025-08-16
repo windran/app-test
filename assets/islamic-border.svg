@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E9D8A6"/>
+      <stop offset="1" stop-color="#C8A24B"/>
+    </linearGradient>
+    <pattern id="p" width="20" height="20" patternUnits="userSpaceOnUse">
+      <rect width="20" height="20" fill="none"/>
+      <path d="M0 10 H20 M10 0 V20" stroke="#C7A247" stroke-width="1" opacity=".35"/>
+      <circle cx="10" cy="10" r="1.2" fill="#C7A247" opacity=".6"/>
+    </pattern>
+  </defs>
+  <!-- corner stars -->
+  <g fill="url(#g)" opacity="0.95">
+    <path d="M10 10 l10 6 -10 6 -10 -6z"/>
+    <path d="M110 10 l10 6 -10 6 -10 -6z" transform="rotate(90 110 16)"/>
+    <path d="M10 110 l10 6 -10 6 -10 -6z" transform="rotate(-90 10 116)"/>
+    <path d="M110 110 l10 6 -10 6 -10 -6z" transform="rotate(180 110 116)"/>
+  </g>
+  <!-- border bands -->
+  <rect x="0" y="0" width="120" height="120" fill="none" stroke="url(#g)" stroke-width="8"/>
+  <rect x="6" y="6" width="108" height="108" fill="url(#p)" stroke="none"/>
+</svg>
