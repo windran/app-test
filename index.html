@@ -43,7 +43,11 @@
 </div>
 <div class="loading" id="loadingRow"><span aria-hidden="true" class="spinner"></span>Loading</div>
 <audio id="bootSfx" preload="auto"><source src="assets/ps2.mp3" type="audio/mpeg"/></audio>
-<audio id="backsound" preload="auto" loop src="assets/audio/backsound.mp3"></audio>
+<!-- Audio Backsound -->
+<audio id="backsound" loop preload="auto">
+  <source src="backsound.mp3" type="audio/mpeg">
+</audio>
+
 </div>
 </div>
 <!-- ===== CONTENT (muncul setelah intro ditutup) ===== -->
@@ -231,6 +235,25 @@
 <a class="btn-primary btn" data-click-sound="" href="#maps"><svg fill="none" height="22" viewbox="0 0 24 24" width="22"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" stroke="currentColor" stroke-width="2"></path><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"></circle></svg></a>
 </div>
 </div>
+<script>
+// Ambil elemen audio
+const backsound = document.getElementById('backsound');
 
+// Fungsi play backsound
+function playBacksound() {
+  try {
+    backsound.volume = 0.5;   // set volume 50%
+    backsound.play();
+  } catch(e) {
+    console.log("Autoplay diblokir, user harus klik dulu:", e);
+  }
+}
+
+// Contoh: play setelah intro ditutup
+document.getElementById('startBtn').addEventListener('click', () => {
+  // Delay sedikit biar smooth
+  setTimeout(() => playBacksound(), 500);
+});
+</script>
 </body>
 </html>
