@@ -62,7 +62,7 @@ startBtn.addEventListener('click', ()=> {
   }
   
   // Ubah durasi timeout menjadi 5000 milidetik (5 detik)
-  setTimeout(finish, 5000);
+  setTimeout(finish, 12000);
 });
 
 // ===== UI Click sound after intro is closed =====
