@@ -20,7 +20,7 @@ if(!reduceMotion) draw();
 // ===== Intro Control =====
 const intro = document.getElementById('intro');
 const startBtn = document.getElementById('startBtn');
-const boot = document.getElementById('bootSfx');
+const boot = document.getElementById('bootSfx'); // Asumsi ini adalah backsound
 const introPhoto = document.getElementById('introPhoto');
 const loading = document.getElementById('loadingRow');
 
@@ -28,16 +28,41 @@ const loading = document.getElementById('loadingRow');
 introPhoto.addEventListener('click',()=>{introPhoto.classList.remove('spin');introPhoto.classList.add('pulse');setTimeout(()=>introPhoto.classList.remove('pulse'),1100)});
 introPhoto.addEventListener('dblclick',()=>{introPhoto.classList.remove('pulse');introPhoto.classList.add('spin');setTimeout(()=>introPhoto.classList.remove('spin'),1200)});
 
-function closeIntro(){ ended=true; intro.classList.add('hide'); cancelAnimationFrame(animId); try{boot.pause();boot.currentTime=0}catch(e){} }
+// Fungsi untuk menutup intro
+function closeIntro(){
+  ended = true;
+  intro.classList.add('hide');
+  cancelAnimationFrame(animId);
+  // Backsound tidak dihentikan
+}
 
 startBtn.addEventListener('click', ()=> {
-  intro.classList.add('run'); // show loading row
-  try{boot.currentTime=0; boot.play().then(()=>{}).catch(()=>{});}catch(e){}
-  // Close when audio ends; if no audio plays, fallback timeout:
-  let closed=false;
-  function finish(){ if(!closed){ closed=true; closeIntro(); scrollToId('opening'); setActiveHref('#opening'); } }
-  if(boot){ boot.onended = finish; }
-  setTimeout(finish, 20000); // fallback max 20s
+  intro.classList.add('run'); // tampilkan baris loading
+  
+  // Putar backsound secara terus-menerus
+  if (boot) {
+    try {
+      boot.loop = true; // Set audio untuk berulang
+      boot.currentTime = 0;
+      boot.play().then(() => {}).catch(() => {});
+    } catch(e) {
+      console.error("Failed to play audio:", e);
+    }
+  }
+
+  // Set timeout untuk menutup intro setelah 5 detik
+  let closed = false;
+  function finish(){
+    if (!closed) {
+      closed = true;
+      closeIntro();
+      scrollToId('opening');
+      setActiveHref('#opening');
+    }
+  }
+  
+  // Ubah durasi timeout menjadi 5000 milidetik (5 detik)
+  setTimeout(finish, 5000);
 });
 
 // ===== UI Click sound after intro is closed =====
