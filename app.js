@@ -21,24 +21,77 @@ if(!reduceMotion) draw();
 const intro = document.getElementById('intro');
 const startBtn = document.getElementById('startBtn');
 const boot = document.getElementById('bootSfx');
+const backsound = document.getElementById('backsound');
 const introPhoto = document.getElementById('introPhoto');
 const loading = document.getElementById('loadingRow');
 
-// Photo interaction: single click pulse, double click spin
-introPhoto.addEventListener('click',()=>{introPhoto.classList.remove('spin');introPhoto.classList.add('pulse');setTimeout(()=>introPhoto.classList.remove('pulse'),1100)});
-introPhoto.addEventListener('dblclick',()=>{introPhoto.classList.remove('pulse');introPhoto.classList.add('spin');setTimeout(()=>introPhoto.classList.remove('spin'),1200)});
+// helper: fade volume halus
+function fadeVolume(audio, to = 0.5, ms = 800){
+  if(!audio) return;
+  const from = audio.volume ?? 0;
+  const start = performance.now();
+  function tick(t){
+    const k = Math.min(1, (t - start) / ms);
+    audio.volume = from + (to - from) * k;
+    if(k < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
 
-function closeIntro(){ ended=true; intro.classList.add('hide'); cancelAnimationFrame(animId); try{boot.pause();boot.currentTime=0}catch(e){} }
+// Photo interaction (aman kalau elemennya tidak ada)
+if (introPhoto){
+  introPhoto.addEventListener('click', ()=>{
+    introPhoto.classList.remove('spin');
+    introPhoto.classList.add('pulse');
+    setTimeout(()=>introPhoto.classList.remove('pulse'),1100);
+  });
+  introPhoto.addEventListener('dblclick', ()=>{
+    introPhoto.classList.remove('pulse');
+    introPhoto.classList.add('spin');
+    setTimeout(()=>introPhoto.classList.remove('spin'),1200);
+  });
+}
+
+// tutup intro + stop boot SFX
+function closeIntro(){
+  ended = true;
+  intro.classList.add('hide');
+  cancelAnimationFrame(animId);
+  try{ boot.pause(); boot.currentTime = 0; }catch(e){}
+}
 
 startBtn.addEventListener('click', ()=> {
   intro.classList.add('run'); // show loading row
-  try{boot.currentTime=0; boot.play().then(()=>{}).catch(()=>{});}catch(e){}
-  // Close when audio ends; if no audio plays, fallback timeout:
-  let closed=false;
-  function finish(){ if(!closed){ closed=true; closeIntro(); scrollToId('opening'); setActiveHref('#opening'); } }
-  if(boot){ boot.onended = finish; }
-  setTimeout(finish, 20000); // fallback max 20s
+
+  // 1) mulai boot SFX (intro)
+  try{ boot.currentTime = 0; boot.play().catch(()=>{}); }catch(e){}
+
+  // 2) pre-warm backsound dalam gesture user (volume 0 dulu agar lolos autoplay)
+  if (backsound){
+    try{
+      backsound.volume = 0;
+      backsound.play().catch(()=>{}); // mulai diam (muted)
+    }catch(e){}
+  }
+
+  let closed = false;
+  function finish(){
+    if (closed) return;
+    closed = true;
+    closeIntro();
+    scrollToId('opening');
+    setActiveHref('#opening');
+    // 3) setelah intro selesai, fade-in backsound
+    if (backsound){
+      fadeVolume(backsound, 0.5, 900); // target volume 0.5 dalam 0.9s
+    }
+  }
+
+  // selesai saat bootSfx berakhir, atau fallback (ubah 20000 kalau mau)
+  if (boot) boot.onended = finish;
+  setTimeout(finish, 20000);
 });
+
 
 // ===== UI Click sound after intro is closed =====
 const uiClick = document.getElementById('uiClick');
