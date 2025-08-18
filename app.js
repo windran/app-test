@@ -56,7 +56,7 @@ let progScrollUntil = 0;         // timestamp untuk menandai scroll programatik
 const AUTO_INTERVAL_MS = 5000;   // 5 detik
 
 // daftar section yang akan dirotasi (ubah sesuai struktur kamu)
-const ROTATE_SECTIONS = ["opening","agenda","gallery","closing"]; 
+const ROTATE_SECTIONS = ["opening","event","maps","gift","galeri","thanks"]; 
 let rotateIdx = 0;
 
 function markProgrammaticScroll(){
