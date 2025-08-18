@@ -36,6 +36,18 @@ function closeIntro(){
   // Backsound tidak dihentikan
 }
 
+// Auto scroll section setiap 5 detik setelah intro selesai
+function autoScrollSections(){
+  const sections = ["event","maps","gift","galeri","thanks"]; // ganti sesuai ID section kamu
+  let idx = 0;
+  setInterval(()=>{
+    idx = (idx + 1) % sections.length;
+    scrollToId(sections[idx]);
+    setActiveHref("#" + sections[idx]);
+  }, 5000);
+}
+
+
 startBtn.addEventListener('click', ()=> {
   intro.classList.add('run'); // tampilkan baris loading
   
