@@ -25,8 +25,8 @@ const introPhoto = document.getElementById('introPhoto');
 const loading = document.getElementById('loadingRow');
 
 // Photo interaction: single click pulse, double click spin
-introPhoto.addEventListener('click',()=>{introPhoto.classList.remove('spin');introPhoto.classList.add('pulse');setTimeout(()=>introPhoto.classList.remove('pulse'),1100)});
-introPhoto.addEventListener('dblclick',()=>{introPhoto.classList.remove('pulse');introPhoto.classList.add('spin');setTimeout(()=>introPhoto.classList.remove('spin'),1200)});
+introPhoto.addEventListener('click',()=>{introPhoto.classList.remove('spin');introPhoto.classList.add('pulse');setTimeout(()=>introPhoto.classList.remove('pulse'),100)});
+introPhoto.addEventListener('dblclick',()=>{introPhoto.classList.remove('pulse');introPhoto.classList.add('spin');setTimeout(()=>introPhoto.classList.remove('spin'),100)});
 
 // Fungsi untuk menutup intro
 function closeIntro(){
@@ -62,7 +62,7 @@ startBtn.addEventListener('click', ()=> {
   }
   
   // Ubah durasi timeout menjadi 5000 milidetik (5 detik)
-  setTimeout(finish, 12000);
+  setTimeout(finish, 3000);
 });
 
 // ===== UI Click sound after intro is closed =====
