@@ -414,7 +414,7 @@ h1, h2, .chip {
 /* Grid responsif rapi */
 #galeri .sec-wrap{
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 12px;
   width: 100%;
   max-width: 1024px;
@@ -442,7 +442,7 @@ h1, h2, .chip {
   #galeri .sec-wrap{ grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 640px){
-  #galeri .sec-wrap{ grid-template-columns: 1fr; }
+  #galeri .sec-wrap{ grid-template-columns: 2, 1fr; }
 }
 
 
